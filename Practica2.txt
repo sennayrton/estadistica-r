@@ -1,0 +1,118 @@
+1. Dados los siguientes datos, que relacionan el peso y la estatura de 10 personas. Se
+pide:
+
+a. Calcular, usando la fórmula vista en teoría, la recta de regresión del Peso en
+función de la Estatura:
+> x = c(82,75,70,68,44,63,80,79,54,54)
+> y = c(185,185,180,178,159,170,190,172,162,165)
+> x
+ [1] 82 75 70 68 44 63 80 79 54 54
+> y
+ [1] 185 185 180 178 159 170 190 172 162 165
+> plot(x,y)
+> cov(x,y)
+[1] 121.5111
+> (b=cov(x,y)/var(x))
+[1] 0.731554
+> (a=mean(y)-b*mean(x))
+[1] 125.659
+> recta = 125.659+0.731554*x
+> y
+ [1] 185 185 180 178 159 170 190 172 162 165
+> plot(x,y)
+> abline(a,b)
+
+c. Realizar los pasos a) y b) pero calculando ahora la recta de regresión de la
+Altura en función del Peso:
+
+> plot(y,x)
+> cov(y,x)
+[1] 121.5111
+> (b=cov(y,x)/var(y))
+[1] 1.075954
+> (a=mean(x)-b*mean(y))
+[1] -120.9616
+> recta = -120.9616+1.075954*y
+> plot(y,x)
+> abline(a,b)
+
+2. Dado el fichero cardata.sav utilizado en la práctica 1. Se pide, calcular gráficos de
+dispersión, rectas de regresión, coeficiente de correlación y gráficos de las rectas de
+regresión para los siguientes pares de valores:
+
+
+a. Potencia (horsepower) en función del consumo(mpg):
+
+> plot(cardata1$mpg,cardata1$horsepower)
+> cov(cardata1$mpg,cardata1$horsepower)
+[1] -142.0436
+> (b=cov(cardata1$mpg,cardata1$horsepower)/var(cardata1$mpg))
+[1] -2.617174
+> (a=mean(cardata1$horsepower)-b*mean(cardata1$mpg))
+[1] 164.0985
+> recta = 164.0985-2.617174*x
+> plot(cardata1$mpg,cardata1$horsepower)
+> abline(a,b)
+> (r=cor(cardata1$mpg,cardata1$horsepower))
+[1] -0.7887461
+
+
+b. Aceleración (accel) en función del consumo (mpg):
+
+> plot(cardata1$mpg,cardata1$accel)
+> cov(cardata1$mpg,cardata1$accel)
+[1] 4.376268
+> (b=cov(cardata1$mpg,cardata1$accel)/var(cardata1$mpg))
+[1] 0.08063339
+> (a=mean(cardata1$accel)-b*mean(cardata1$mpg))
+[1] 13.94528
+> recta = 13.94528-0.08063339*x
+> plot(cardata1$mpg,cardata1$accel)
+> abline(a,b)
+> (r=cor(cardata1$mpg,cardata1$accel))
+[1] 0.2347268
+
+
+c. Peso (weight) en función del consumo (mpg):
+
+> plot(cardata1$mpg,cardata1$weight)
+> cov(cardata1$mpg,cardata1$weight)
+[1] -3683.336
+> (b=cov(cardata1$mpg,cardata1$weight)/var(cardata1$mpg))
+[1] -67.866
+> (a=mean(cardata1$weight)-b*mean(cardata1$mpg))
+[1] 4627.165
+> recta = 4627.165-67.866*x
+> plot(cardata1$mpg,cardata1$weight)
+> abline(a,b)
+> (r=cor(cardata1$mpg,cardata1$weight))
+[1] -0.8257621
+
+
+d. Precio(Price) en función del consumo:
+
+> plot(cardata1$mpg,cardata1$price)
+> cov(cardata1$mpg,cardata1$price)
+[1] 160.2711
+> (b=cov(cardata1$mpg,cardata1$price)/var(cardata1$mpg))
+[1] 2.953019
+> (a = mean(cardata1$price)-b*mean(cardata1$mpg)) 
+[1] 4537.273
+> y = 4537.273 + 2.953019*x
+> plot(cardata1$mpg,cardata1$price)	
+> abline(a,b)	
+> (r=cor(cardata1$mpg,cardata1$price))
+[1] 0.01070007
+
+
+e. ¿Cuáles de las rectas de regresión calculadas en el punto anterior se
+ajustan más a los valores de los datos? ¿Porqué?:
+
+Las rectas de los apartados A y C porque los puntos están mas cerca de las rectas que en las demás y hay pocos puntos dispersos y muy lejos de ellas.
+
+
+
+
+
+
+

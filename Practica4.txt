@@ -1,0 +1,183 @@
+1. Un fabricante de vasos diseña un experimento para estimar la cantidad media de vasos que se rompen. Para ello, se observa la rotura media de vasos en 16 palets seleccionados aleatoriamente. La media de vasos rotos son 20.8, 20.6, 21.0, 20.9, 19.9, 20.2, 19.8, 19.6, 20.9, 21.1, 20.4, 20.6, 19.7, 19.6, 20.3, 20.7.
+Construir un intervalo de confianza al 98% de confianza:
+a) Si la rotura de vasos se distribuye según una normal de desviación típica s = 0.45 libras.
+
+palets=c(20.8, 20.6, 21.0, 20.9, 19.9, 20.2, 19.8, 19.6, 20.9, 21.1, 20.4, 20.6, 19.7, 19.6, 20.3, 20.7)
+> palets
+ [1] 20.8 20.6 21.0 20.9 19.9 20.2 19.8 19.6 20.9 21.1 20.4 20.6 19.7 19.6 20.3 20.7
+media=mean(palets)
+> alfa=0.02
+> desv=0.45
+> cuantil=qnorm(1-alfa/2)
+> lim_inf=media-cuantil*desv/sqrt(16)
+> lim_sup=media+cuantil*desv/sqrt(16)
+> lim_inf
+[1] 20.11954
+> lim_sup
+[1] 20.64296
+
+b) Si la rotura se distribuye según una normal de desviación típica desconocida.
+ t.test(palets,conf.level=0.98)
+
+	One Sample t-test
+
+data:  palets
+t = 155.85, df = 15, p-value < 2.2e-16
+alternative hypothesis: true mean is not equal to 0
+98 percent confidence interval:
+ 20.04092 20.72158
+sample estimates:
+mean of x 
+ 20.38125 
+
+2. En una muestra de 40 votantes de un partido, 25 de ellos están conformes con las decisiones que ha tomado el electorado con respecto a los resultados. Calcular un intervalo de confianza, a un 95% de confianza para la proporción de votantes conformes a los resultados.
+n=40
+> conformes=25
+> prop.test(25,40)
+
+	1-sample proportions test with continuity correction
+
+data:  25 out of 40, null probability 0.5
+X-squared = 2.025, df = 1, p-value = 0.1547
+alternative hypothesis: true p is not equal to 0.5
+95 percent confidence interval:
+ 0.4580964 0.7682594
+sample estimates:
+    p 
+0.625 
+
+
+3. Se desea comparar la cantidad media de cierta sustancia tóxica en dos pantanos contaminados por desperdicios industriales. Se seleccionaron 11 muestras en un pantano y 8 muestras en el otro. Los resultados de los análisis fueron:
+Pantano1: 10 10 12 13 9 8 12 12 10 14 8
+Pantano2: 11 8 9 7 10 8 8 10
+Si las dos poblaciones son normales e independientes, calcular un intervalo de confianza con nivel de confianza del 90% para la diferencia de las medias poblacionales de cantidad de sustancia tóxica.
+pantano1=c(10,10,12,13,9,8,12,12,10,14,8)
+> pantano2=c(11,8,9,7,10,8,8,10)
+var.test(pantano1,pantano2,conf.level=0.90)
+
+	F test to compare two variances
+
+data:  pantano1 and pantano2
+F = 2.1846, num df = 10, denom df = 7, p-value = 0.3119
+alternative hypothesis: true ratio of variances is not equal to 1
+90 percent confidence interval:
+ 0.6007504 6.8498698
+sample estimates:
+ratio of variances 
+          2.184643 
+
+> t.test(pantano1,pantano2,var.equal = TRUE, conf.level = 0.90)
+
+	Two Sample t-test
+
+data:  pantano1 and pantano2
+t = 2.2564, df = 17, p-value = 0.0375
+alternative hypothesis: true difference in means is not equal to 0
+90 percent confidence interval:
+ 0.424258 3.280287
+sample estimates:
+mean of x mean of y 
+ 10.72727   8.87500 
+
+
+
+4. Una empresa alimentaria está interesada en la investigación preliminar de un nuevo yogur que parece tener propiedades reductoras del colesterol en la sangre. A tal fin se toma una muestra al azar de 6 personas, y se determina el contenido en colesterol antes y después del tratamiento. Los resultados han sido los siguientes:
+Antes: 217 252 229 200 209 213
+Después: 209 241 230 208 206 211
+Calcular un intervalo de confianza, al 96% de confianza para la diferencia del nivel de colesterol medio antes y después del experimento.
+ antes=c(217,252,229,200,209,213)
+> despues=c(209,241,230,208,206,211)
+> var.test(antes,despues,conf.level = 0.96)
+
+	F test to compare two variances
+
+data:  antes and despues
+F = 1.6107, num df = 5, denom df = 5, p-value = 0.6137
+alternative hypothesis: true ratio of variances is not equal to 1
+96 percent confidence interval:
+  0.2025307 12.8098869
+sample estimates:
+ratio of variances 
+          1.610713 
+
+> t.test(antes,despues,var.equal = TRUE, conf.level = 0.96)
+
+	Two Sample t-test
+
+data:  antes and despues
+t = 0.2621, df = 10, p-value = 0.7986
+alternative hypothesis: true difference in means is not equal to 0
+96 percent confidence interval:
+ -20.00437  25.00437
+sample estimates:
+mean of x mean of y 
+    220.0     217.5 
+
+#Se incluye al 0 en el intervalo de confianza.
+
+5.Una compañía telefónica quiere saber si su nuevo producto tendrá más aceptación en la población adulta o entre jóvenes. Para ello, toma una muestra aleatoria de 400 adultos y 600 jóvenes, sabiendo que sólo a 100 adultos y 300 jóvenes les había gustado el producto. Construir un intervalo de confianza al 99% de confianza para la diferencia de proporciones de población (adultos y jóvenes) a los que les gusta el producto. ¿Puede suponerse que el producto gusta por igual a todos (es decir, adultos y jóvenes)?
+ alfa=0.01
+> n=400
+> gustan=100
+> prop.test(100,400,conf.level = 0.99)
+
+	1-sample proportions test with
+	continuity correction
+
+data:  100 out of 400, null probability 0.5
+X-squared = 99.002, df = 1, p-value <
+2.2e-16
+alternative hypothesis: true p is not equal to 0.5
+99 percent confidence interval:
+ 0.1974786 0.3108606
+sample estimates:
+   p 
+0.25 
+
+> n2=600
+> gustan2=300
+> prop.test(300,600,conf.level = 0.99)
+
+	1-sample proportions test without
+	continuity correction
+
+data:  300 out of 600, null probability 0.5
+X-squared = 0, df = 1, p-value = 1
+alternative hypothesis: true p is not equal to 0.5
+99 percent confidence interval:
+ 0.4477094 0.5522906
+sample estimates:
+  p 
+0.5 
+Le gusta más a los jovenes porque le gusta a la mitad (0.5) y a los adultos sólo le gusta a 1/4 parte (0.25)
+
+
+6. En un hospital se realiza un experimento con bebés, se eligen a 20 y se miden su brazo derecho. Se obtuvieron los siguientes valores:
+93, 90, 97, 90, 93, 91, 96, 94, 91, 91, 88, 93, 95, 91, 89, 92, 87, 88, 90, 86
+Suponiendo que la longitud del brazo sigue una distribución Normal. Construir un intervalo de confianza al 99% de confianza para La media µ.
+
+> brazos=c(93, 90, 97, 90, 93, 91, 96, 94, 91, 91, 88, 93, 95, 91, 89, 92, 87, 88, 90, 86)
+> t.test(brazos,conf.level = 0.99)
+
+	One Sample t-test
+
+data:  brazos
+t = 139.01, df = 19, p-value < 2.2e-16
+alternative hypothesis: true mean is not equal to 0
+99 percent confidence interval:
+ 89.37195 93.12805
+sample estimates:
+mean of x 
+    91.25 
+
+
+
+
+
+
+
+
+
+
+
+

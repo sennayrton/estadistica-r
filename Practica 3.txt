@@ -1,0 +1,171 @@
+1. Representar la función Binomial para los siguientes casos B1(0.3,30); B2(0.6,30) y
+B3(0.8,100).
+help(Distributions)
+> dbinom(0:30, 30, 0.3)
+ [1] 2.253934e-05 2.897915e-04 1.800847e-03 7.203389e-03 2.083838e-02 4.643981e-02 8.292823e-02
+ [8] 1.218537e-01 1.501412e-01 1.572908e-01 1.415617e-01 1.103078e-01 7.485173e-02 4.441751e-02
+[15] 2.311524e-02 1.056697e-02 4.245656e-03 1.498467e-03 4.638111e-04 1.255429e-04 2.959225e-05
+[22] 6.039234e-06 1.058827e-06 1.578375e-07 1.972969e-08 2.029340e-09 1.672533e-10 1.061925e-11
+[29] 4.876188e-13 1.441238e-14 2.058911e-16
+> plot(0:30, dbinom(0:30, 30, 0.3) )
+> dbinom(0:30, 30, 0.6)
+ [1] 1.152922e-12 5.188147e-11 1.128422e-09 1.579791e-08 1.599538e-07 1.247640e-06 7.797748e-06
+ [8] 4.010270e-05 1.729429e-04 6.341240e-04 1.997491e-03 5.447702e-03 1.293829e-02 2.687184e-02
+[15] 4.894513e-02 7.831221e-02 1.101265e-01 1.360387e-01 1.473752e-01 1.396186e-01 1.151854e-01
+[22] 8.227527e-02 5.048710e-02 2.634109e-02 1.152423e-02 4.148722e-03 1.196747e-03 2.659437e-04
+[29] 4.274096e-05 4.421478e-06 2.210739e-07
+> plot(0:30, dbinom(0:30, 30, 0.6))
+dbinom(0:100, 100, 0.8)
+  [1] 1.267651e-70 5.070602e-68 1.003979e-65 1.311866e-63 1.272510e-61 9.772879e-60 6.189490e-58
+  [8] 3.324640e-56 1.545958e-54 6.321249e-53 2.300935e-51 7.530332e-50 2.233999e-48 6.048981e-47
+ [15] 1.503604e-45 3.448265e-44 7.327562e-43 1.448271e-41 2.671256e-40 4.611431e-39 7.470518e-38
+ [22] 1.138365e-36 1.635106e-35 2.218056e-34 2.846505e-33 3.461351e-32 3.993866e-31 4.378461e-30
+ [29] 4.566109e-29 4.534619e-28 4.292772e-27 3.877343e-26 3.344208e-25 2.756438e-24 2.172722e-23
+ [36] 1.638853e-22 1.183616e-21 8.189344e-21 5.430828e-20 3.453450e-19 2.106604e-18 1.233134e-17
+ [43] 6.929040e-17 3.738459e-16 1.937201e-15 9.642958e-15 4.611849e-14 2.119488e-13 9.361073e-13
+ [50] 3.973680e-12 1.621261e-11 6.357888e-11 2.396435e-10 8.681424e-10 3.022422e-09 1.011137e-08
+ [57] 3.250084e-08 1.003535e-07 2.976000e-07 8.474034e-07 2.316236e-06 6.075373e-06 1.528642e-05
+ [64] 3.688153e-05 8.528853e-05 1.889469e-04 4.007964e-04 8.135570e-04 1.579258e-03 2.929637e-03
+ [71] 5.189643e-03 8.771228e-03 1.413142e-02 2.168109e-02 3.164267e-02 4.387783e-02 5.773399e-02
+ [78] 7.198004e-02 8.489953e-02 9.457163e-02 9.930021e-02 9.807429e-02 9.089812e-02 7.885138e-02
+ [85] 6.383207e-02 4.806179e-02 3.353148e-02 2.158348e-02 1.275388e-02 6.878495e-03 3.362820e-03
+ [92] 1.478163e-03 5.784115e-04 1.990233e-04 5.928354e-05 1.497689e-05 3.120186e-06 5.146699e-07
+ [99] 6.302080e-08 5.092590e-09 2.037036e-10
+plot(0:100, dbinom(0:100, 100, 0.8))
+
+
+2. Para cada una de las funciones de distribución de probabilidad:
+a. Calcular la probabilidad de que variable tome el valor 20:
+
+dbinom(20, 30, 0.3)
+[1] 2.959225e-05
+> dbinom(20, 30, 0.6)
+[1] 0.1151854
+> dbinom(20, 100, 0.8)
+[1] 7.470518e-38
+
+b. Calcular la probabilidad de que la variable tome un valor igual o menor de 10:
+
+pbinom(10, 30, 0.3)
+[1] 0.7303704
+> pbinom(10, 30, 0.6)
+[1] 0.002853883
+> pbinom(10, 100, 0.8)
+[1] 2.365727e-51
+
+c. Calcular la probabilidad de que la variable tome un valor mayor de 25:
+
+1-pbinom(25, 30, 0.3)
+[1] 1.783748e-10
+> 1- pbinom(25, 30, 0.6)
+[1] 0.001510074
+> 1- pbinom(25, 100, 0.8)
+[1] 1
+
+3. Representar la función normal, con 50 números generados aleatoriamente, con los
+siguientes datos de medias y desviaciones típicas: (0,1); (0,0.5) y (0,2). Para cada una de
+estas funciones calcular:
+a. El valor de la función de probabilidad en el punto 0.2:
+(P en 0.2):
+ rnorm(50,0,1)
+ [1]  0.141437923  1.132808506  0.147416925  0.088344637  1.734312987  0.323870144 -0.265905640
+ [8]  0.005621675  0.742594112  0.318497717 -0.278169127  0.108882123  0.905318319 -0.466227073
+[15] -0.342016273  1.368369584 -1.021432087 -0.198351025 -0.932139335  0.728510471 -0.995937137
+[22] -0.151447560  0.166756220 -0.391193745  1.189942826 -1.208315924  1.141135626 -0.339960670
+[29]  0.552112902  2.188740566  0.855579946  1.199601613 -0.238326051  0.407744282  0.736358215
+[36] -1.190035554 -0.579884441  0.367675726 -0.210786532 -0.898118132  1.156494854  0.851790012
+[43]  0.944603424  0.447182796  0.283458099  1.276324903 -1.051771080 -0.022541354  0.590528738
+[50]  0.061812929
+> rnorm(50,0,0.5)
+ [1]  0.25524546  0.27726935  0.29758464 -0.54883277  0.33209384  0.57268668  0.07634297
+ [8]  0.03764816  0.09292705 -0.60912582 -0.41321473  0.22122535 -0.04271111 -0.64741731
+[15]  0.01370211  0.02238595 -0.66104410  0.26710384 -0.18171979 -0.62606675 -0.06933998
+[22]  0.48738971 -0.53452855  0.47078884 -0.21291172 -0.06023171 -0.57645737  0.59189943
+[29]  0.61141781 -0.52444193  0.39897807 -0.40513102 -0.96813077  0.74557025  0.07791997
+[36] -0.17495209 -0.34715345 -0.68434222  0.14033065  0.23945480  0.09921034 -0.73473800
+[43] -0.17381380 -0.08544231 -0.31363097 -0.40561233 -0.20624197  0.04718706 -0.82063375
+[50] -0.03130290
+> rnorm(50,0,2)
+ [1]  2.22829158 -1.80959713  2.59485125  1.19128724 -1.77755015 -1.68278392 -2.26912867
+ [8] -1.92355504  1.44532883  1.27398171  2.21557039  1.62587094  2.01028004  0.87207122
+[15] -1.39381967  4.74848221 -2.11073845  2.51214567 -0.14570644 -0.99876665  1.31926019
+[22]  0.98287802  1.60230692  0.59168290 -0.64912292 -1.20489559 -1.01670734  1.58097560
+[29] -0.11082320  0.86377135 -1.96598115 -1.19002380 -2.74784916 -2.75491158  1.10719659
+[36] -0.39450728 -0.97274671  0.90183311  2.67052051  1.44743714  0.39947820  0.64085621
+[43]  1.76542923 -0.47788244 -1.23593834 -2.00901658  0.06523172 -1.30601084 -2.16728896
+[50]  1.01376215
+
+b. La probabilidad de que la variable sea mayor de 1:
+P(X>1):
+dnorm(0.2,0,1)
+[1] 0.3910427
+> dnorm(0.2,0,0.05)
+[1] 0.002676605
+> dnorm(0.2,0,0.1)
+[1] 0.5399097
+
+
+4- Representar el histograma de cada una de las secuencias aleatorias del ejercicio 3
+
+plot(rnorm(50,0,1))
+> plot(rnorm(50,0,0.5))
+> plot(rnorm(50,0,2))
+> plot(dnorm(0.2,0,1))
+> plot(dnorm(0.2,0,0.05))
+> plot(dnorm(0.2,0,0.1))
+
+Adjunto capturas.
+
+T4.1. Un agente de seguros dedicado a la venta de seguros de vida, realiza visitas a posibles clientes con el fin de contratar un seguro de vida. Se sabe de su trayectoria como agente que en el 60% de las visitas tiene éxito y contrata un seguro. Definir la variable aleatoria a este experimento aleatorio y obtener la media y la varianza.
+ install.packages("extraDistr")
+package ‘Rcpp’ successfully unpacked and MD5 sums checked
+package ‘extraDistr’ successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+	C:\Users\picaz\AppData\Local\Temp\RtmpEne2bB\downloaded_packages
+> library(extraDistr)
+> dbern(1,0.6)
+[1] 0.6
+> dbern(0,0.6)
+[1] 0.4
+x=1 si hace el seguro, ocurre A
+x=0 si no hace el seguro, ocurre no A
+La media sería p que es 0.6.
+La varianza sería p*(1-p)=p*q=0.6*0.4=0.24
+
+T4.3. Un representante realiza 5 visitas cada día a ¡os comercios de su ramo, y por su experiencia anterior sabe que la probabilidad de que le hagan un pedido en cada visita es del 0,4. Obtener:
+a) La distribución del número de pedidos por día.
+X~B(5,0.4)
+b) Las probabilidades para los diferentes números de pedidos.
+P(X=numero pedidos)->dbinom(x,5,0.4)
+c) La representación gráfica de la función de probabilidad.
+plot(dbinom(x,5,0.4))
+d) El número medio de pedidos por día.
+E[X] = 5*0.4=2
+e) La varianza.
+Var[X] = 5*0.4*0.6=1.2
+f) La probabilidad de que el número de pedios que realiza durante un día esté comprendido entre 1 y 3.
+pbinom(3,5,0.4)-pbinom(0,5,0.4)
+0.8352
+g) La probabilidad de que por lo menos realice dos pedidos.
+1-pbinom(1,5,0.4)
+0.66304
+
+T4.6. Se sabe que el 1% de los artículos importados de un determinado país tienen algún defecto. Si tomamos una muestra de tamaño 30 artículos, determinar la probabilidad de que tres o más de ellos tengan algún defecto.
+E[X]= 0.01
+P>=3=1-P(X<=2)
+P(X<=2)=P(X=0)+P(X=1)+P(X=2)
+1-(dbinom(0,30,0.01)+dbinom(1,30,0.01)+dbinom(2,30,0.01))
+[1] 0.003317709
+
+T4.14. Sea una variable aleatoria X distribuida según una normal con media  = 50 y desviación típica  = 8. Obtener:
+a) La probabilidad de que la variable aleatoria X tome valores entre 38 y 58.
+
+E[X]=50 desv= 8
+pnorm(58,50,8)-pnorm(38,50,8)
+[1] 0.7745375
+
+b) La probabilidad de que la variable aleatoria X tome un valor mayor que 66.
+> 1-pnorm(66,50,8)
+[1] 0.02275013
+
